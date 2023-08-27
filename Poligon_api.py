@@ -1,7 +1,13 @@
 from twelvedata import TDClient
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
 
 # Initialize client - apikey parameter is requiered
-td = TDClient(apikey="36fee84cc17249d3b0ada76c777b2ab4")
+td = TDClient(apikey=API_KEY)
 
 # Construct the necessary time series
 ts = td.time_series(

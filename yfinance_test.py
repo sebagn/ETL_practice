@@ -15,8 +15,8 @@ database = 'data-engineer-database'
 engine = create_engine(
     f'redshift+psycopg2://{user}:{password}@{host}:{port}/{database}')
 
-tickers = ["AAPL", "MSFT"] # list of tickers
-
+tickers = ["AAPL", "MSFT", "AMZN", "GOOG", "META", "TSLA", "NVDA", "JPM", "JNJ", "V"]
+           
 df = pd.DataFrame()
 
 for i in tickers:

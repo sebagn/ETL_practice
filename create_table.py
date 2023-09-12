@@ -12,7 +12,10 @@ host="data-engineer-cluster.cyhh5bfevlmn.us-east-1.redshift.amazonaws.com"
 port=5439
 database='data-engineer-database'
 
+class Base:
+    __allow_unmapped__ = True
 Base = declarative_base()
+
 class YourTable(Base):
     __tablename__ = 'stock'
 

@@ -22,8 +22,7 @@ df = pd.DataFrame()
 for i in tickers:
     tickerDf = yf.download(
         tickers=i,
-        start="2021-01-01",
-        end="2021-01-31",
+        period="1mo",
         interval="1d"
     )
     tickerDf = tickerDf.reset_index()
@@ -51,12 +50,6 @@ for i in tickers:
     tickerDf.to_sql("stock", engine, schema=user, if_exists='append', index=True, index_label='id')
 
     df = pd.concat([df, tickerDf], ignore_index=True)
-
-# create an aggregate table (in memory)
-df = df.groupby("symbol").agg({
-    "open": "first",
-    "close": "last",
-    "change": "sum",
-    "change_percent": "sum"
-}).reset_index()
-print(df)
+    
+print(df.head())
+print(df.tail())
